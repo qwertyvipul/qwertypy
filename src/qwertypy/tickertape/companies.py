@@ -1,20 +1,20 @@
 from bs4 import BeautifulSoup
 import requests
 
-def getCompanyInfo(tt_name):
-    """Returns company info of the tt_name"""
-    res = requests.get("https://www.tickertape.in/stocks/{}".format(tt_name))
+def getCompanyInfo(ttName):
+    """Returns company info of the ttName"""
+    res = requests.get("https://www.tickertape.in/stocks/{}".format(ttName))
     soup = BeautifulSoup(res.content, "html.parser")
     ticker = soup.find("span", {"class":"ticker"}).text
     name = soup.find("h1", {"class":"security-name"}).text
     return {
-        "tt_name": tt_name,
+        "ttName": ttName,
         "name": name,
         "ticker": ticker
     }
 
 def getTopCompanies():
-    """Returns the list of tt_name of top companies"""
+    """Returns the list of ttName of top companies"""
     res = requests.get("https://www.tickertape.in/stocks?filter=top")
     soup = BeautifulSoup(res.content, "html.parser")
     
@@ -23,12 +23,12 @@ def getTopCompanies():
     
     topCompanies = []
     for li in lis:
-        tt_name = li.find("a").get("href").split("/stocks/")[-1]
-        topCompanies.append(tt_name)
+        ttName = li.find("a").get("href").split("/stocks/")[-1]
+        topCompanies.append(ttName)
     return topCompanies
 
 def getAllCompanies():
-    """Returns the list of tt_name of all companies"""
+    """Returns the list of ttName of all companies"""
     res = requests.get("https://www.tickertape.in/stocks")
     soup = BeautifulSoup(res.content, "html.parser")
     links_div = soup.find("div", {"class":"link-list"})
@@ -46,11 +46,11 @@ def getAllCompanies():
         lis = pageDiv.find_all("li")
     
         for li in lis:
-            tt_name = li.find("a").get("href").split("/stocks/")[-1]
-            if not tt_name in temp_names:
+            ttName = li.find("a").get("href").split("/stocks/")[-1]
+            if not ttName in temp_names:
                 try:
-                    temp_names.append(tt_name)
-                    allCompanies.append(tt_name)
+                    temp_names.append(ttName)
+                    allCompanies.append(ttName)
                 except:
                     continue
     return allCompanies
