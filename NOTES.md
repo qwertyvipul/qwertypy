@@ -28,7 +28,11 @@ pip install -r requirements.txt
 ## Testing
 
 ```bash
+# Run all tests
 py -m unittest
+
+# Run individual test
+py -m unittest -v test.qwertypy.test_greetings
 ```
 
 ## Release

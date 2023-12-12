@@ -24,7 +24,8 @@ class TestMethods(TestCase):
             trendValues = yPredict,
             legends = ["trendLegend", "barLegend"],
             text = "text", watermark = "watermark",
-            # saveToFile = "testImage.jpg"
+            # saveToFile = "testImage.jpg",
+            # showValues = True
         )
 
 if __name__ == "main":

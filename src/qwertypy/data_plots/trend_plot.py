@@ -49,4 +49,15 @@ def trendPlot(xValues, yValues, xLabel, yLabel, plotTitle, **kwargs):
         fileName = kwargs["saveToFile"]
         plt.savefig(fileName, bbox_inches="tight", dpi=150)
 
+    if "showValues" in kwargs:
+        showValues = kwargs["showValues"]
+        if showValues:
+            for bar in ax.patches:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_height() / 2 + bar.get_y(),
+                    round(bar.get_height()), ha = 'center',
+                    color = "black", size = 10
+                )
+
     plt.show()

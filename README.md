@@ -84,7 +84,7 @@ print("yPredict2: ", yPredict2)
 #### `qwertypy.data_plots.trend_plot`
 
 ```py
-import src.qwertypy.data_analysis.regression as qpyRegression
+import qwertypy.data_analysis.regression as qpyRegression
 import qwertypy.data_plots.trend_plot as qpyTrendPlot
 import qwertypy.tickertape.companies as ttCompanies
 import qwertypy.tickertape.financials as ttFinancials
@@ -105,6 +105,7 @@ qpyTrendPlot.trendPlot(
     trendValues = yPredict,
     legends = ["Revenue trend", "Revenue (INR Cr.)"],
     text = "text", watermark = "qwertypy",
-    # saveToFile = "testImage.jpg"
+    # saveToFile = "testImage.jpg",
+    # showValues = True
 )
 ```
