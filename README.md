@@ -51,6 +51,12 @@ ttName = "reliance-industries-RELI"
 for statementType in ttFinancials.statementTypes:
     statement = ttFinancials.getStatement(ttName, statementType)
     print(statementType, type(statement))
+
+ttName = "reliance-industries-RELI"
+statementType = ttFinancials.statementTypes["income"]
+statement = ttFinancials.getStatement(ttName, statementType)
+yearsAndValues = ttFinancials.getYearsAndValues(statement, "incDps")
+print(yearsAndValues)
 ```
 
 ### `qwertypy.data_analysis`
