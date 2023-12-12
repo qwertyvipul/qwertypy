@@ -2,52 +2,51 @@
 
 My personal utilities library.
 
-## Virtual Environment
+## Installation
 
 ```bash
-# Create new venv
-py -m venv ./venv
-
-# Activate venv
-## In Windows git bash
-source ./venv/Scrips/activate
+pip install qwertypy
 ```
 
-To See which venv:
+### Upgrade
+
+```bash
+pip install --upgrade qwertypy
+```
+
+## Usage
+
+-   Try on colab: [Click here](https://colab.research.google.com/drive/1SK96YfBgIPY-CKNfvQxvBKkJnNA7fSCe?usp=sharing)
+
+### `qwertypy.greetings`
 
 ```py
-import sys
+import qwertypy.greetings as qpyGreetings
 
-print(sys.prefix)
+print(qpyGreetings.hello())
 ```
 
-Install required packages
+### `qwertypy.tickertape.companies`
 
-```bash
-pip install -r requirements.txt
+```py
+import qwertypy.tickertape.companies as ttCompanies
+
+topCompanies = ttCompanies.getTopCompanies()
+print("TOP = ", len(topCompanies))
+# print("ALL = ", len(ttCompanies.getAllCompanies()))
+
+ttName = "reliance-industries-RELI"
+companyInfo = ttCompanies.getCompanyInfo(ttName)
+print(companyInfo)
 ```
 
-## Testing
+### `qwertypy.tickertape.financials`
 
-```bash
-py -m unittest
+```py
+import qwertypy.tickertape.financials as ttFinancials
+
+ttName = "reliance-industries-RELI"
+for statementType in ttFinancials.statementTypes:
+    statement = ttFinancials.getStatement(ttName, statementType)
+    print(statementType, type(statement))
 ```
-
-## Release
-
-### Steps
-
-1. Update `setup.py` with version no.
-2. Update `CHANGELOG.md``.
-
-```bash
-py release.py
-```
-
-## Resources
-
-### Setup and configurations
-
-1. Project setup: https://medium.com/vlmedia-tech/step-by-step-guide-to-create-python-library-using-ci-cd-pipeline-8e66022108df
-2. Changelog: https://keepachangelog.com/
-3. Running tests: https://stackoverflow.com/questions/1732438/how-do-i-run-all-python-unit-tests-in-a-directory

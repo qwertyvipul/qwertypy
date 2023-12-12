@@ -13,6 +13,7 @@ setup(
     url="https://github.com/qwertyvipul/qwertypy",
     project_urls={
         "Repository": "https://github.com/qwertyvipul/qwertypy",
+        "Changelog": "https://github.com/qwertyvipul/qwertypy/blob/main/CHANGELOG.md"
     },
     classifiers=[
         'Programming Language :: Python :: 3',
