@@ -1,4 +1,11 @@
 import requests
+import json
+
+statementTypes = dict(
+    income = "income",
+    balancesheet = "balancesheet",
+    cashflow = "cashflow"
+)
 
 def getStatement(ttName, stmtType):
     """Returns records of the requested statement"""
@@ -6,7 +13,6 @@ def getStatement(ttName, stmtType):
     stmt = dict()
     url_string = "https://api.tickertape.in/stocks/financials/{}/{}/annual/normal?count=10"
     url = url_string.format(stmtType, ttID)
-    print(url)
     records = json.loads(requests.get(url).content)["data"]
     for record in records:
         if record["displayPeriod"] == "TTM":
