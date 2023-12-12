@@ -3,6 +3,8 @@ import re
 import shutil
 import subprocess
 import traceback
+import requests
+import json
 
 class ReleaseManager:
     def __init__(self):
@@ -59,6 +61,9 @@ class ReleaseManager:
             f.close()
         return version
 
+    def getLatestVersion(self):
+        return json.loads(requests.get('https://pypi.python.org/pypi/qwertypy/json').content.decode('utf-8'))["info"]["version"]
+
     def release(self):
         try:
             version = self.getUnreleasedVersion()
@@ -67,10 +72,14 @@ class ReleaseManager:
             if os.path.isdir("dist"): shutil.rmtree("dist")
             subprocess.call('py setup.py sdist')
             subprocess.call('py -m twine upload -r qwertypy dist/*')
+            latestVersion = self.getLatestVersion()
+            if latestVersion != version: raise Exception()
+            print("Successfully released version {}!".format(version))
         except Exception as e:
             print(traceback.format_exc())
             self.revertSetup()
             self.revertChangelog()
+            print("Failed to release version {}!".format(version))
 
 
 releaseManager = ReleaseManager()
