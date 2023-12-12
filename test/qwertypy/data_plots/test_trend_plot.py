@@ -7,7 +7,7 @@ import src.qwertypy.tickertape.financials as ttFinancials
 
 
 class TestMethods(TestCase):
-    @unittest.skip("Use when required")
+    # @unittest.skip("Use when required")
     def test_trendPlot(self):
         ttName = "reliance-industries-RELI"
         statementType = ttFinancials.statementTypes["income"]
@@ -22,9 +22,9 @@ class TestMethods(TestCase):
             xTrain, yTrain, 
             "xLabel", "yLabel", "plotTitle",
             trendValues = yPredict,
-            legends = ["barLegend", "trendLegend"],
+            legends = ["trendLegend", "barLegend"],
             text = "text", watermark = "watermark",
-            saveToFile = "testImage.jpg"
+            # saveToFile = "testImage.jpg"
         )
 
 if __name__ == "main":
