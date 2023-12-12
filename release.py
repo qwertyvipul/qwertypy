@@ -72,6 +72,9 @@ class ReleaseManager:
             subprocess.call('git push')
         except Exception as e:
             print(traceback.format_exc())
+            self.revertSetup()
+            self.revertChangelog()
+
 
 releaseManager = ReleaseManager()
 releaseManager.release()
