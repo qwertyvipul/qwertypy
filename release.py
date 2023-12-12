@@ -68,6 +68,8 @@ class ReleaseManager:
             if os.path.isdir("dist"): shutil.rmtree("dist")
             subprocess.call('py setup.py sdist')
             subprocess.call('py -m twine upload -r qwertypy dist/*')
+            subprocess.call('git add .')
+            subprocess.call('git commit -m "Released version {}"'.format(version))
         except Exception as e:
             print(traceback.format_exc())
             self.revertSetup()
