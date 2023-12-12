@@ -7,12 +7,12 @@ statementTypes = dict(
     cashflow = "cashflow"
 )
 
-def getStatement(ttName, stmtType):
+def getStatement(ttName, statementType):
     """Returns records of the requested statement"""
     ttID = ttName.split("-")[-1]
-    stmt = dict()
+    statement = dict()
     url_string = "https://api.tickertape.in/stocks/financials/{}/{}/annual/normal?count=10"
-    url = url_string.format(stmtType, ttID)
+    url = url_string.format(statementType, ttID)
     records = json.loads(requests.get(url).content)["data"]
     for record in records:
         if record["displayPeriod"] == "TTM":
@@ -23,5 +23,16 @@ def getStatement(ttName, stmtType):
                 record[key] = round(record[key], 2)
             except:
                 pass
-        stmt[record["displayPeriod"].split("FY")[1].strip()] = record
-    return stmt
+        statement[record["displayPeriod"].split("FY")[1].strip()] = record
+    return statement
+
+def getYearsAndValues(statement, key):
+    "Returns yearly values of the requested key"
+    yearsAndValues = {}
+    for fy in sorted(statement.keys()):
+        year = fy.split("FY")[-1].strip()
+        value = statement[fy][key]
+        if not value:
+            value = 0
+        yearsAndValues[year] = value
+    return yearsAndValues

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   `qwertypy.tickertape.financials`: Added `getYearsAndValues`.
+
 ### Internal
 
 -   Added git commands to `release.py`.
