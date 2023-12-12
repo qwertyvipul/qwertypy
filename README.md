@@ -33,6 +33,17 @@ pip install -r requirements.txt
 py -m unittest
 ```
 
+## Release
+
+### Steps
+
+1. Update `setup.py` with version no.
+2. Update `CHANGELOG.md``.
+
+```bash
+py release.py
+```
+
 ## Resources
 
 ### Setup and configurations
