@@ -84,28 +84,27 @@ print("yPredict2: ", yPredict2)
 #### `qwertypy.data_plots.trend_plot`
 
 ```py
-import qwertypy.data_analysis.regression as qpyRegression
-import qwertypy.data_plots.trend_plot as qpyTrendPlot
-import qwertypy.tickertape.companies as ttCompanies
-import qwertypy.tickertape.financials as ttFinancials
+import random
 
-ttName = "reliance-industries-RELI"
-companyInfo = ttCompanies.getCompanyInfo(ttName)
-statementType = ttFinancials.statementTypes["income"]
-statement = ttFinancials.getStatement(ttName, statementType)
-yearsAndValues = ttFinancials.getYearsAndValues(statement, "incTrev")
-xTrain = [int(x) for x in list(yearsAndValues.keys())]
-yTrain = [yearsAndValues[x] for x in yearsAndValues]
-model = qpyRegression.QpyLinearRegression(xTrain, yTrain)
-model.train()
-yPredict = [round(val, 2) for val in model.getPrediction()]
+import qwertypy.data_plots.trend_plot as qpyTrendPlot
+
+xValues = [i for i in range(10)]
+yValues = [random.randint(1, 10) for _ in range(10)]
+xTicks = ["xTick" + str(i+1) for i in range(10)]
+trendValues = list(yValues)
 qpyTrendPlot.trendPlot(
-    xTrain, yTrain,
-    "Years", "Revenue (INR Cr.)", companyInfo["name"],
-    trendValues = yPredict,
-    legends = ["Revenue trend", "Revenue (INR Cr.)"],
-    text = "text", watermark = "qwertypy",
-    # saveToFile = "testImage.jpg",
-    # showValues = True
+    xValues, yValues,
+    xTicks = xTicks,
+    rotateXTicks = 90,
+    xLabel = "xLabel",
+    yLabel = "yLabel",
+    plotTitle = "plotTitle",
+    trendValues = trendValues,
+    legends = ["trendLegend", "barLegend"],
+    text = "text",
+    textBackground = "red",
+    watermark = "watermark",
+    showValues = True,
+    # saveToFile = "testImage.jpg"
 )
 ```
