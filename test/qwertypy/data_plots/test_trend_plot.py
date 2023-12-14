@@ -1,31 +1,32 @@
+
+import random
 import unittest
+
 from unittest import TestCase
 
-import src.qwertypy.data_analysis.regression as qpyRegression
 import src.qwertypy.data_plots.trend_plot as qpyTrendPlot
-import src.qwertypy.tickertape.financials as ttFinancials
-
 
 class TestMethods(TestCase):
     # @unittest.skip("Use when required")
     def test_trendPlot(self):
-        ttName = "reliance-industries-RELI"
-        statementType = ttFinancials.statementTypes["income"]
-        statement = ttFinancials.getStatement(ttName, statementType)
-        yearsAndValues = ttFinancials.getYearsAndValues(statement, "incTrev")
-        xTrain = [int(x) for x in list(yearsAndValues.keys())]
-        yTrain = [yearsAndValues[x] for x in yearsAndValues]
-        model = qpyRegression.QpyLinearRegression(xTrain, yTrain)
-        model.train()
-        yPredict = [round(val, 2) for val in model.getPrediction()]
+        xValues = [i for i in range(10)]
+        yValues = [random.randint(1, 10) for _ in range(10)]
+        xTicks = ["xTick" + str(i+1) for i in range(10)]
+        trendValues = list(yValues)
         qpyTrendPlot.trendPlot(
-            xTrain, yTrain, 
-            "xLabel", "yLabel", "plotTitle",
-            trendValues = yPredict,
+            xValues, yValues,
+            # xTicks = xValues, 
+            rotateXTicks = 90,
+            xLabel = "xLabel", 
+            yLabel = "yLabel", 
+            plotTitle = "plotTitle",
+            trendValues = trendValues,
             legends = ["trendLegend", "barLegend"],
-            text = "text", watermark = "watermark",
-            # saveToFile = "testImage.jpg",
-            # showValues = True
+            text = "text", 
+            textBackground = "red",
+            watermark = "watermark",
+            showValues = True,
+            # saveToFile = "testImage.jpg"
         )
 
 if __name__ == "main":
