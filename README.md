@@ -1,6 +1,12 @@
 # qwertypy
 
-My personal utilities library.
+My personal python utilities library.
+
+## Quick links
+
+-   [Github](https://github.com/qwertyvipul/qwertypy/)
+-   [PyPI](https://pypi.org/project/qwertypy/)
+-   [Docs](https://qwertyvipul.io/qwertypy/)
 
 ## Installation
 
