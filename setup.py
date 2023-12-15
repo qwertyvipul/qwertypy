@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name='qwertypy',
-    version='0.5.2',
+    version='0.5.3',
     author='Vipul Sharma',
     description='My personal utilities library.',
     long_description=long_description,
