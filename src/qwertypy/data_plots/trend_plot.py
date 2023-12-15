@@ -124,11 +124,11 @@ def trendPlot(xValues, yValues, **kwargs):
 
     if "showValues" in kwargs:
         if kwargs["showValues"]:
-            for bar in ax.patches:
+            for i, bar in enumerate(ax.patches):
                 ax.text(
                     bar.get_x() + bar.get_width() / 2,
                     bar.get_height() / 2 + bar.get_y(),
-                    round(bar.get_height()), ha = 'center',
+                    yValues[i], ha = 'center',
                     color = "black", size = 10
                 )
 

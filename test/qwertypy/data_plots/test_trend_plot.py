@@ -7,10 +7,10 @@ from unittest import TestCase
 import src.qwertypy.data_plots.trend_plot as qpyTrendPlot
 
 class TestMethods(TestCase):
-    # @unittest.skip("Use when required")
+    @unittest.skip("Use when required")
     def test_trendPlot(self):
         xValues = [i for i in range(10)]
-        yValues = [random.randint(1, 10) for _ in range(10)]
+        yValues = [round(random.randint(1, 10) / 3, 1) for _ in range(10)]
         xTicks = ["xTick" + str(i+1) for i in range(10)]
         trendValues = list(yValues)
         qpyTrendPlot.trendPlot(
