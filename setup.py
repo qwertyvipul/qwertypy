@@ -6,8 +6,8 @@ with open("README.md", "r", encoding="utf-8") as f:
 setup(
     name='qwertypy',
     version='0.5.3',
-    author='Vipul Sharma',
-    description='My personal utilities library.',
+    author='Vipul Sharma | @qwertyvipul',
+    description='My personal python utilities library.',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/qwertyvipul/qwertypy",
