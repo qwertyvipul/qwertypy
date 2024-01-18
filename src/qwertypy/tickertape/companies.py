@@ -7,10 +7,12 @@ def getCompanyInfo(ttName):
     soup = BeautifulSoup(res.content, "html.parser")
     ticker = soup.find("span", {"class":"ticker"}).text
     name = soup.find("h1", {"class":"security-name"}).text
+    price = soup.find("span", {"class":"current-price"}).text
     return {
         "ttName": ttName,
         "name": name,
-        "ticker": ticker
+        "ticker": ticker,
+        "price": price
     }
 
 def getTopCompanies():
