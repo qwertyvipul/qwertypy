@@ -36,23 +36,17 @@ def getAllCompanies():
     links_div = soup.find("div", {"class":"link-list"})
     alinks = links_div.find_all("a")
     
-    allCompanies = []
-    temp_names = []
+    allCompanies = set()
     for alink in alinks:
         ares = requests.get("https://www.tickertape.in/stocks?filter={}".format(alink.text))
         asoup = BeautifulSoup(ares.content, "html.parser")
         
         pageDiv = asoup.find("div", {"class":"page"})
-        if not pageDiv:
-            continue
+        if not pageDiv: continue
         lis = pageDiv.find_all("li")
     
         for li in lis:
             ttName = li.find("a").get("href").split("/stocks/")[-1]
-            if not ttName in temp_names:
-                try:
-                    temp_names.append(ttName)
-                    allCompanies.append(ttName)
-                except:
-                    continue
-    return allCompanies
+            if len(ttName.split("/etfs/")) > 1: continue
+            allCompanies.add(ttName)
+    return list(allCompanies)
