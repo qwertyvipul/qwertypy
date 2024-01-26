@@ -66,6 +66,7 @@ class ReleaseManager:
             self.updateSetup(version)
             self.updateChangelog(version)
             if os.path.isdir("dist"): shutil.rmtree("dist")
+            subprocess.call('py -m pip install build twine')
             subprocess.call('py setup.py sdist')
             subprocess.call('py -m twine upload -r qwertypy dist/*')
             subprocess.call('git add .')
