@@ -3,9 +3,12 @@ from setuptools import setup, find_packages
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
+with open('requirements.txt') as f:
+    install_requires = f.read().splitlines()
+
 setup(
     name='qwertypy',
-    version='0.5.5',
+    version='0.5.6',
     author='Vipul Sharma | @qwertyvipul',
     description='My personal python utilities library.',
     long_description=long_description,
@@ -25,4 +28,5 @@ setup(
     python_requires='>=3.6',
     test_suite='nose.collector',
     tests_require=['nose'],
+    install_requires=install_requires,
 )
