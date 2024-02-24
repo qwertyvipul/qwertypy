@@ -114,3 +114,89 @@ qpyTrendPlot.trendPlot(
     # saveToFile = "testImage.jpg"
 )
 ```
+
+### `qwertypy.dsa`
+
+#### `qwertypy.dsa.single_source_shortest_path`
+
+```py
+from collections import defaultdict
+
+from qwertypy.dsa.single_source_shortest_path import dijkstra
+
+n = 9
+edges = [
+    (0, 1, 4),
+    (0, 7, 8),
+    (1, 7, 11),
+    (1, 2, 8),
+    (7, 8, 7),
+    (7, 6, 1),
+    (2, 8, 2),
+    (8, 6, 6),
+    (2, 3, 7),
+    (2, 5, 4),
+    (6, 5, 2),
+    (3, 5, 14),
+    (3, 4, 9),
+    (5, 4, 10)
+]
+
+graph = defaultdict(lambda: defaultdict(int))
+for u, v, d in edges:
+    graph[u][v] = graph[v][u] = d
+
+print(dijkstra(graph, 0, n))
+print(dijkstra(graph, 1, n))
+```
+
+#### `qwertypy.dsa.all_pairs_shortest_path`
+
+```py
+from collections import defaultdict
+
+from qwertypy.dsa.all_pairs_shortest_path import fw
+
+edges = [
+    [1, 2, 3],
+    [1, 4, 7],
+    [2, 1, 8],
+    [2, 3, 2],
+    [3, 1, 5],
+    [3, 4, 1],
+    [4, 1, 2]
+]
+graph = defaultdict(dict)
+for u, v, cost in edges:
+    graph[u-1][v-1] = cost
+fw(graph, len(graph))
+```
+
+#### `qwertypy.dsa.strongly_connected_components`
+
+```py
+from collections import defaultdict
+
+from qwertypy.dsa.strongly_connected_components import tarjan
+
+edges = [[0,1],[2,0],[1,3],[3,4],[4,5],[5,6],[6,4]]
+graph = defaultdict(list)
+for u, v in edges:
+    graph[u].append(v)
+
+low = tarjan(graph)
+print("low: ", low)
+
+scc = defaultdict(list)
+for key in low:
+    scc[low[key]].append(key)
+
+print("Strongly connected components: ", list(scc.values()))
+
+bridges = []
+for u, v in edges:
+    if scc[u] != scc[v]:
+        bridges.append([u, v])
+
+print("Bridges: ", bridges)
+```
