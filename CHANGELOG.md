@@ -9,18 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   `qwertpy.dsa`
-
-## [0.5.9]
-
-### Added
-
 -   `qwertypy.dsa.strongly_connected_components`
-
-## [0.5.8]
-
-### Added
-
 -   `qwertypy.dsa.single_source_shortest_path`
 -   `qwertypy.dsa.all_source_shortest_path`
 
