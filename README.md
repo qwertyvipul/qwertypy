@@ -1,6 +1,6 @@
 # qwertypy
 
-My personal python utilities library.
+Python utilities library for financial utilities, data analysis, visualization and DSA.
 
 ## Quick links
 

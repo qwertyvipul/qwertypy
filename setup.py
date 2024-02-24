@@ -10,10 +10,11 @@ setup(
     description='My personal python utilities library.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/qwertyvipul/qwertypy",
+    url="https://qwertyvipul.io/qwertypy/",
     project_urls={
         "Repository": "https://github.com/qwertyvipul/qwertypy",
-        "Changelog": "https://github.com/qwertyvipul/qwertypy/blob/main/CHANGELOG.md"
+        "Changelog": "https://github.com/qwertyvipul/qwertypy/blob/main/CHANGELOG.md",
+        "Colab notebook": "https://colab.research.google.com/drive/1SK96YfBgIPY-CKNfvQxvBKkJnNA7fSCe?usp=sharing"
     },
     classifiers=[
         'Programming Language :: Python :: 3',
