@@ -40,7 +40,7 @@ py -m unittest -v test.qwertypy.test_greetings
 ### Steps
 
 1. Update `setup.py` with version no.
-2. Update `CHANGELOG.md``.
+2. Update `CHANGELOG.md` with `Unreleased (version no.)`.
 
 ```bash
 py release.py
