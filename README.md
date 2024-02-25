@@ -117,7 +117,7 @@ qpyTrendPlot.trendPlot(
 
 ### `qwertypy.dsa`
 
-#### `qwertypy.dsa.single_source_shortest_path`
+#### `qwertypy.dsa.single_source_shortest_path.dijkstra`
 
 ```py
 from collections import defaultdict
@@ -150,7 +150,7 @@ print(dijkstra(graph, 0, n))
 print(dijkstra(graph, 1, n))
 ```
 
-#### `qwertypy.dsa.all_pairs_shortest_path`
+#### `qwertypy.dsa.all_pairs_shortest_path.fw`
 
 ```py
 from collections import defaultdict
@@ -172,19 +172,19 @@ for u, v, cost in edges:
 fw(graph, len(graph))
 ```
 
-#### `qwertypy.dsa.strongly_connected_components`
+#### `qwertypy.dsa.strongly_connected_components.tarjanUndirected`
 
 ```py
 from collections import defaultdict
 
-from qwertypy.dsa.strongly_connected_components import tarjan
+from qwertypy.dsa.strongly_connected_components import tarjanUndirected
 
 edges = [[0,1],[2,0],[1,3],[3,4],[4,5],[5,6],[6,4]]
 graph = defaultdict(list)
 for u, v in edges:
     graph[u].append(v)
 
-low = tarjan(graph)
+low = tarjanUndirected(graph)
 print("low: ", low)
 
 scc = defaultdict(list)
